@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans');
+
+.jee-pagination {
+    padding-top: 22px;
+    padding-bottom: 22px;
+    font-family: 'PT Sans', sans-serif;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.jee-pagination__list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+.jee-pagination__item {
+    width: 28px;
+    height: 28px;
+    text-align: center;
+    margin: 0 4px;
+    cursor: pointer;
+    line-height: 2.1;
+    font-size: 14px;
+}
+
+.jee-pagination__prev {
+    transform: rotate(90deg);
+}
+
+.jee-pagination__next {
+    transform: rotate(-90deg);
+}
+
+.jee-pagination__page {
+    position: relative;
+}
+
+.jee-pagination__item--active {
+    color: #fff;
+    position: relative;
+}
+
+.jee-pagination__item--active:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    /* transform: rotate(-45deg); */
+    border-radius: 50%;
+    background: #1f74ff;
+}
+
+.specific-page-wapper {
+    display: flex;
+}
+.specific-page-wapper input {
+    outline: none;
+    width: 28px;
+    border: 1px solid #1f74ff;
+    padding: 6px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.specific-page-wapper button {
+    outline: none;
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    background: #1f74ff;
+    border: none;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.specific-page-wapper input[type=number]::-webkit-inner-spin-button, 
+.specific-page-wapper input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0;
+}
+
+/* Media Queries */
+@media only screen and (max-width: 480px) {
+    .jee-pagination__item {
+        width: 24px;
+        height: 24px;
+        margin: 0 3px;
+        line-height: 2.1;
+        font-size: 12px;
+    }
+    .specific-page-wapper {
+        padding-top: 12px;
+        flex-basis: 100%;
+        justify-content: center;
+    }
+    
+}

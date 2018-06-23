@@ -1,0 +1,39 @@
+<div class="jee-pagination">
+    <ul class="jee-pagination__list">
+      <li
+        class="jee-pagination__item jee-pagination__prev"
+        (click)="goPrev()">
+        <svg width="9px" height="6px" viewBox="0 0 9 6" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <g transform="translate(-2.000000, -4.000000)" fill="#333333">
+                  <polygon points="9.9453125 4 11 5.0546875 6.5 9.5546875 2 5.0546875 3.0546875 4 6.5 7.4453125"></polygon>
+              </g>
+          </g>
+        </svg>
+      </li>
+      <li
+        class="jee-pagination__page"
+        *ngFor="let page of jpgn; let i=index"
+        (click)="pageFunction(page)">
+        <div
+          [ngClass]="page === currentPage ? 'jee-pagination__item jee-pagination__item--active' : 'jee-pagination__item'">
+          {{page}}
+        </div>
+      </li>
+      <li
+        class="jee-pagination__item jee-pagination__next"
+        (click)="goNext()">
+        <svg width="9px" height="6px" viewBox="0 0 9 6" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <g transform="translate(-2.000000, -4.000000)" fill="#333333">
+                  <polygon points="9.9453125 4 11 5.0546875 6.5 9.5546875 2 5.0546875 3.0546875 4 6.5 7.4453125"></polygon>
+              </g>
+          </g>
+        </svg>
+      </li>
+    </ul>
+    <div class="specific-page-wapper" *ngIf="specificPage">
+      <input type="number" [(ngModel)]="specPage">
+      <button (click)="goToPage()">go</button>
+    </div>
+  </div>
