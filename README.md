@@ -1,6 +1,22 @@
 # AngularJeePagination
 ![alt text](./src/jeePagination.png)
 
+# Installation
+npm install
+`npm install angular-jee-pagination --save` <br />
+
+Once installed, you can import jeePagination component into any application’s app.module.ts, by including it in its @NgModule imports array… <br />
+`import { JeePaginationModule } from 'angular-jee-pagination';` <br />
+
+Now you can use jeePagination component with basic 3 parameters
+`<jee-pagination`
+`   [totalRecords]="pages"`
+`   [perPage]="perPage"`
+`   (controller)="paginationController($event)">`
+`</jee-pagination>`
+
+
+
 # Configuration
 
 A complete list of JeePagination parameters can be found in the table below.
@@ -17,9 +33,9 @@ A complete list of JeePagination parameters can be found in the table below.
 
 # Development
 
-1. Download and install NodeJS so you can use NPM:
+1. Download and install NodeJS so you can use NPM: <br />
   https://nodejs.org/download/
 
-2. From the Terminal, navigate to the project directory and run in the following order:
- ```npm install```
+2. From the Terminal, navigate to the project directory and run in the following order: <br />
+ ```npm install``` <br />
  ```ng serve```

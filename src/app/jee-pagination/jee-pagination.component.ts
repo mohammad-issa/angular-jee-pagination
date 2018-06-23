@@ -9,9 +9,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class JeePagination implements OnInit {
   @Input() totalRecords:number;
   @Input() perPage:number;
-  @Input() showBefore:number = 2; // 2 is Default
-  @Input() showAfter:number = 3; // 3 is Default
-  @Input() specificPage:boolean = true; // true is Default
+  @Input() showBefore:number = 2; // 2 By Default
+  @Input() showAfter:number = 3; // 3 By Default
+  @Input() specificPage:boolean = true; // true By Default
   @Output() controller = new EventEmitter();
   
   totalPages:number[] = [];
