@@ -1,5 +1,5 @@
 # AngularJeePagination
-========
+![alt text](./src/jeePagination.png)
 
 # Configuration
 
