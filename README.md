@@ -1,5 +1,5 @@
 # AngularJeePagination
-![alt text](./src/assets/jeePagination.png)
+![alt text](https://s3-eu-west-1.amazonaws.com/eventsimg/thumbnail/jeePagination.png)
 
 # Installation
 npm install <br />
