@@ -1,6 +1,6 @@
 {
   "name": "angular-jee-pagination",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -12,6 +12,10 @@
     "packagr": "ng-packagr -p ng-package.json"
   },
   "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mohammad-issa/angular-jee-pagination/"
+  },
   "dependencies": {
     "@angular/animations": "^5.2.0",
     "@angular/common": "^5.2.0",
