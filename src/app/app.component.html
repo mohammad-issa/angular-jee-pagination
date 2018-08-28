@@ -1,5 +1,9 @@
-<jee-pagination
+<app-jee-pagination
     [totalRecords]="pages"
     [perPage]="perPage"
+    [highlightColor]="color"
+    [goToBox]="goToBox"
+    [showBefore]="2"
+    [showAfter]="3"
     (controller)="paginationController($event)">
-</jee-pagination>
+</app-jee-pagination>

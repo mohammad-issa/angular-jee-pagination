@@ -1,32 +1,32 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'jee-pagination',
+  selector: 'app-jee-pagination',
   templateUrl: './jee-pagination.component.html',
   styleUrls: ['./jee-pagination.component.css']
 })
 
-export class JeePagination implements OnInit {
-  @Input() totalRecords:number;
-  @Input() perPage:number;
-  @Input() showBefore:number = 2; // 2 By Default
-  @Input() showAfter:number = 3; // 3 By Default
-  @Input() specificPage:boolean = true; // true By Default
+export class JeePaginationComponent implements OnInit, OnChanges {
+  @Input() totalRecords: number;
+  @Input() perPage: number;
+  @Input() showBefore = 2; // 2 By Default
+  @Input() showAfter = 3; // 3 By Default
+  @Input() goToBox = true; // true By Default
+  @Input() highlightColor = 'blue'; // light blue By Default
   @Output() controller = new EventEmitter();
-  
-  totalPages:number[] = [];
-  jpgn:number[] = [];
-  currentPage:number = 1;
-  paginationLength:number;
-  limit:number = 10;
-  specPage:number;
-  innerWidth:number;
-  breakpoint:number = 480;
-  dots:boolean;
-  
+
+  totalPages: number[] = [];
+  jpgn: number[] = [];
+  currentPage = 1;
+  paginationLength: number;
+  limit = 10;
+  specPage: number;
+  innerWidth: number;
+  breakpoint = 480;
+
   constructor() {
   }
-  
+
   ngOnInit() {
     this.mobileSettings();
   }
@@ -34,13 +34,13 @@ export class JeePagination implements OnInit {
   ngOnChanges() {
     this.paginationLength = Math.ceil(this.totalRecords / this.perPage);
 
-    for(let i = 1 ; i <= this.paginationLength ; i++) {
+    for (let i = 1 ; i <= this.paginationLength ; i++) {
       this.totalPages.push(i);
     }
 
     this.mobileSettings();
-    
-    if(this.paginationLength <= this.limit) {
+
+    if (this.paginationLength <= this.limit) {
       this.limitedPagination();
     } else {
       this.goToFirst();
@@ -49,11 +49,11 @@ export class JeePagination implements OnInit {
   }
 
   /**
-   * check window width for mobile 
+   * check window width for mobile
    */
   mobileSettings() {
     this.innerWidth = window.innerWidth;
-    if(this.innerWidth <= this.breakpoint) {
+    if (this.innerWidth <= this.breakpoint) {
       this.showAfter = 2;
       this.showBefore = 1;
     }
@@ -74,7 +74,7 @@ export class JeePagination implements OnInit {
     this.jpgn = this.totalPages.slice(0, this.showAfter + 1);
     this.jpgn.push.apply(this.jpgn, ['...', this.paginationLength]);
   }
-  
+
   /**
    * Go to the last page
    */
@@ -87,8 +87,7 @@ export class JeePagination implements OnInit {
    * Go to previous page
    */
   goPrev() {
-    console.log('goPrev');
-    if(this.currentPage > 1) {
+    if (this.currentPage > 1) {
       this.pageFunction(this.currentPage - 1);
     }
   }
@@ -97,8 +96,7 @@ export class JeePagination implements OnInit {
    * Go to next page
    */
   goNext() {
-    console.log('goNext');
-    if(this.currentPage < this.paginationLength) {
+    if (this.currentPage < this.paginationLength) {
       this.pageFunction(this.currentPage + 1);
     }
   }
@@ -107,63 +105,47 @@ export class JeePagination implements OnInit {
    * Go to specific page
    */
   goToPage() {
-    if(this.specPage > 0 && this.specPage <= this.paginationLength && typeof(this.specPage) === 'number') {
+    if (this.specPage > 0 && this.specPage <= this.paginationLength && typeof(this.specPage) === 'number') {
       this.pageFunction(this.specPage);
     }
   }
 
   /**
    * Page click event
-   * @param page 
+   * @param page
    */
   pageFunction(page) {
 
-    if(typeof(page) === 'string') {
+    if (typeof(page) === 'string') {
       return;
     }
 
     this.currentPage = page;
 
     // Check if the page number is exist
-    if(page <= 0 && page > this.paginationLength) {
-      return
-    }
-
-    // Check if the total page was less or equal limit variable (limitedPagination)
-    if(this.paginationLength <= this.limit) {
-      console.log('if check');
+    if (page <= 0 && page > this.paginationLength) {
       return;
     }
-
+    // Check if the total page was less or equal limit variable (limitedPagination)
+    if (this.paginationLength <= this.limit) {
+      return;
+    }
     // First Page
-    if(this.currentPage === 1) {
+    if (this.currentPage === 1) {
       this.goToFirst();
-    }
-
-    // Last page
-    else if(this.currentPage === this.paginationLength) {
+    } else if (this.currentPage === this.paginationLength) { // Last page
       this.goToLast();
-    }
-
-    // Lower range
-    else if((this.currentPage - this.showBefore) <= 1 + 1) {
+    } else if ((this.currentPage - this.showBefore) <= 1 + 1) { // Lower range
       this.jpgn = this.totalPages.slice(0, this.currentPage + this.showAfter);
       this.jpgn.push.apply(this.jpgn, ['...', this.paginationLength]);
-    }
-
-    // Upper range
-    else if((this.currentPage + this.showAfter) >= (this.paginationLength - 1)){
+    } else if ((this.currentPage + this.showAfter) >= (this.paginationLength - 1)) { // Upper range
       this.jpgn = this.totalPages.slice(this.currentPage - this.showBefore - 1, this.paginationLength);
       this.jpgn.unshift.apply(this.jpgn, [1, '...']);
-    }
-    
-    // In between range
-    else {
+    } else { // In between range
       this.jpgn = this.totalPages.slice(this.currentPage - this.showBefore - 1, this.currentPage + this.showAfter);
       this.jpgn.unshift.apply(this.jpgn, [1, '...']);
       this.jpgn.push.apply(this.jpgn, ['...', this.paginationLength]);
     }
-
     this.controller.emit(this.currentPage);
     return;
 

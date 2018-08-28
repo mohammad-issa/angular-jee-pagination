@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { JeePagination } from './jee-pagination.component';
+import { JeePaginationComponent } from './jee-pagination.component';
 
 @NgModule({
   imports: [
@@ -10,10 +10,10 @@ import { JeePagination } from './jee-pagination.component';
     FormsModule
   ],
   declarations: [
-    JeePagination
+    JeePaginationComponent
   ],
   exports: [
-    JeePagination
+    JeePaginationComponent
   ]
 })
 export class JeePaginationModule { }
