@@ -16,7 +16,8 @@
         *ngFor="let page of jpgn; let i=index"
         (click)="pageFunction(page)">
         <div
-          [ngClass]="page === currentPage ? 'jee-pagination__item jee-pagination__item--active' : 'jee-pagination__item'">
+          [ngClass]="page === currentPage ? 'jee-pagination__item jee-pagination__item--active' : 'jee-pagination__item'"
+          [ngStyle]="(page === currentPage && highlightColor!='') && {'background': highlightColor}">
           {{page}}
         </div>
       </li>
@@ -32,8 +33,8 @@
         </svg>
       </li>
     </ul>
-    <div class="specific-page-wapper" *ngIf="specificPage">
-      <input type="number" [(ngModel)]="specPage">
-      <button (click)="goToPage()">go</button>
+    <div class="specific-page-wapper" *ngIf="goToBox">
+      <input type="number" [(ngModel)]="specPage" [ngStyle]="highlightColor!='' && {'border-color': highlightColor}">
+      <button (click)="goToPage()" [ngStyle]="highlightColor!='' && {'background': highlightColor}">go</button>
     </div>
   </div>

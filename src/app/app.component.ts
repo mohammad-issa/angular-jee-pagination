@@ -5,13 +5,11 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
-  title = 'app';
-
-  pages: number = 100;
-  perPage: number = 1;
-  showBefore: number = 1;
-  showAfter:number = 1;
+export class AppComponent implements OnInit {
+  pages = 100;
+  perPage = 1;
+  goToBox = false;
+  color = '#2196F3';
 
   constructor() {
   }
@@ -20,6 +18,6 @@ export class AppComponent implements OnInit{
   }
 
   paginationController(pageNumber) {
-    console.log('pageNumber', pageNumber)
+    console.log('pageNumber', pageNumber);
   }
 }
